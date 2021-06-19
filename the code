@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html>
+<body>
+
+<h1>A Web Page</h1>
+<p id="demo">A Paragraph</p>
+<input id="level" type="text">
+<button type="button" onclick="calculate()">Calculate</button>
+<table id="table">
+  <tr>
+    <th>Experience</th>
+    <td id="xp">0</th>
+  </tr>
+  <tr>
+    <th>Coin</td>
+    <td id="coin">0</td>
+  </tr>
+  <tr>
+    <th>Ruby</td>
+    <td id="ruby">0</td>
+  </tr>
+  <tr>
+    <th>Item 1</td>
+    <td id="item1">0</td>
+  </tr>
+  <tr>
+    <th>Item 2</td>
+    <td id="item2">0</td>
+  </tr>
+  <tr>
+    <th>Battering ram</td>
+    <td id="bt_ram">0</td>
+  </tr>
+  <tr>
+    <th>Treasure map fragment lvl. 1</td>
+    <td id="tr_map">0</td>
+  </tr>
+</table>
+
+<script>
+function calculate() {
+ var level = document.getElementById("level").value;
+ var xp = 1000, ruby = 1, item1 = 0, item2 = 0, bt_ram = 1, tr_map = 3;
+ const items = ["Arrows","Fan","Shuriken","Katana","Spikes","Boomerang","Petard","Bomb","Steel","Iron sand","Sushi","Mortar"];
+
+ for (i = 2; i < level; i++) {
+  xp += i*1000;
+ }
+
+ if (level % 5 == 0) {
+  ruby = 2;
+ }
+ if (level % 10 == 0) {
+  ruby = 3;
+ }
+
+ item1 = items[(level-2)%items.length];
+ console.log(item1);
+ if (item1 == "Arrows") {
+  item1 = "5 x [[File:Arrows.png|30x30px]]";
+ } else if (item1 == "Fan") {
+  item1 = "5 x [[File:Fan.png|30x30px]]";
+ } else if (item1 == "Shuriken") {
+  item1 = "5 x [[File:Shuriken.png|30x30px]]";
+ } else if (item1 == "Katana") {
+  item1 = "5 x [[File:Katana.png|30x30px]]";
+ } else if (item1 == "Spikes") {
+  item1 = "5 x [[File:Spikes.png|30x30px]]";
+ } else if (item1 == "Boomerang") {
+  item1 = "5 x [[File:Boomerng.png|30x30px]]";
+ } else if (item1 == "Petard") {
+  item1 = "5 x [[File:Petard.png|30x30px]]";
+ } else if (item1 == "Bomb") {
+  item1 = "5 x [[File:Bomb.png|30x30px]]";
+ } else if (item1 == "Steel") {
+  item1 = "5 x [[File:Steel.png|30x30px]]";
+  item2 = "5 x [[File:Charcoal.png|30x30px]]";
+ } else if (item1 == "Iron sand") {
+  item1 = "5 x [[File:Iron sand.png|30x30px]]";
+  item2 = "5 x [[File:Chemicals.png|30x30px]]";
+ } else if (item1 == "Sushi") {
+  item1 = "2 x [[File:Sushi.png|30x30px]]";
+ } else if (item1 == "Mortar") {
+  item1 = "1 x [[File:Mortar.png|30x30px]]";
+ }
+ 
+ if (level < 15) {
+  bt_ram = 0;
+  }
+  
+  if (level == 5) {
+  tr_map = 5;
+  }
+  
+  if (level < 5) {
+  tr_map = 0;
+  }
+
+ document.getElementById("xp").innerHTML = xp;
+ document.getElementById("coin").innerHTML = level*2;
+ document.getElementById("ruby").innerHTML = ruby;
+ document.getElementById("item1").innerHTML = item1;
+ document.getElementById("item2").innerHTML = item2;
+ document.getElementById("bt_ram").innerHTML = bt_ram;
+ document.getElementById("tr_map").innerHTML = tr_map;
+}
+</script>
+
+
+</body>
+</html>
